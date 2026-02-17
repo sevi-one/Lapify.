@@ -1,0 +1,6 @@
+
+{
+  "name": "Lapify",
+  "description": "A sophisticated laptop recommendation engine powered by Google Sheets data, designed for both casual buyers and expert administrators.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lapify</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A1931;
+            color: #F6FAFD;
+            overflow-x: hidden;
+        }
+        .hero-glow {
+            background: radial-gradient(circle at center, rgba(179, 207, 229, 0.15) 0%, transparent 70%);
+            filter: blur(80px);
+        }
+        .hero-arc {
+            background: linear-gradient(180deg, rgba(74, 127, 167, 0.1) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(179, 207, 229, 0.1);
+        }
+        .glass-card {
+            background: rgba(26, 61, 99, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(179, 207, 229, 0.1);
+        }
+        .neon-border:hover {
+            border-color: #B3CFE5;
+            box-shadow: 0 0 20px rgba(179, 207, 229, 0.15);
+        }
+        .blue-gradient {
+            background: linear-gradient(135deg, #4A7FA7 0%, #1A3D63 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom, #F6FAFD 0%, #B3CFE5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A1931;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A3D63;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4A7FA7;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
