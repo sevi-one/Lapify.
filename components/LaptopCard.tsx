@@ -104,16 +104,6 @@ export const LaptopCard: React.FC<LaptopCardProps> = ({ laptop, isBestMatch }) =
           <CompactSpec label="RAM TYPE" value={laptop.ramSpeed} />
         </div>
 
-        {/* Secondary Spec Highlights */}
-        <div className="flex gap-2 mb-4">
-           <div className="px-2 py-1 rounded bg-[#B3CFE5]/5 border border-[#B3CFE5]/10 text-[9px] font-black text-[#B3CFE5] uppercase">
-             {laptop.ramGB}GB RAM
-           </div>
-           <div className="px-2 py-1 rounded bg-[#B3CFE5]/5 border border-[#B3CFE5]/10 text-[9px] font-black text-[#B3CFE5] uppercase">
-             {laptop.storageGB}GB STORAGE
-           </div>
-        </div>
-
         {/* Dynamic Footer */}
         <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/5">
           <div className="flex flex-col">
@@ -153,7 +143,7 @@ export const LaptopCard: React.FC<LaptopCardProps> = ({ laptop, isBestMatch }) =
           <div className="glass-card rounded-[40px] w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.8)] custom-scrollbar">
             <div className="sticky top-0 bg-[#0A1931]/95 backdrop-blur-md p-8 border-b border-white/5 flex items-center justify-between z-10">
               <div>
-                <span className="text-[#B3CFE5] font-black text-[10px] tracking-[0.3em] uppercase">{laptop.brand} Engineering</span>
+                <span className="text-[#B3CFE5] font-black text-[10px] tracking-[0.3em] uppercase">{laptop.brand}</span>
                 <h2 className="text-3xl font-black text-[#F6FAFD]">{laptop.model}</h2>
               </div>
               <button 
@@ -181,7 +171,7 @@ export const LaptopCard: React.FC<LaptopCardProps> = ({ laptop, isBestMatch }) =
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="space-y-6">
-                  <h4 className="text-[11px] font-black text-[#B3CFE5] uppercase tracking-[0.2em] border-b border-[#B3CFE5]/20 pb-2">Hardware Blueprint</h4>
+                  <h4 className="text-[11px] font-black text-[#B3CFE5] uppercase tracking-[0.2em] border-b border-[#B3CFE5]/20 pb-2">Hardware Specifications</h4>
                   <div className="space-y-3">
                     <div className="flex justify-between text-xs py-1 border-b border-white/5"><span className="text-[#4A7FA7]">CPU</span> <span className="text-[#F6FAFD] font-bold">{laptop.cpuBrand} {laptop.cpuSeries}</span></div>
                     <div className="flex justify-between text-xs py-1 border-b border-white/5"><span className="text-[#4A7FA7]">RAM</span> <span className="text-[#F6FAFD] font-bold">{laptop.ramGB}GB {laptop.ramSpeed}</span></div>
@@ -205,7 +195,7 @@ export const LaptopCard: React.FC<LaptopCardProps> = ({ laptop, isBestMatch }) =
                   onClick={handleCheckAvailability}
                   className="w-full py-4 blue-gradient text-[#F6FAFD] text-sm font-black uppercase tracking-widest rounded-2xl shadow-xl hover:brightness-110"
                 >
-                  Buy Laptop(${laptop.price})
+                  Buy Now! (${laptop.price})
                 </button>
               </div>
             </div>

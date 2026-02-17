@@ -137,8 +137,8 @@ function getMockLaptops(): Laptop[] {
   return [
     {
       refId: "REF-001",
-      brand: "ASUS",
-      model: "Zenbook 14 OLED",
+      brand: "Dummy",
+      model: "Dummy",
       segment: "Ultraportable",
       type: "SSD",
       sizeInches: 14,
@@ -146,8 +146,8 @@ function getMockLaptops(): Laptop[] {
       refreshRate: 90,
       panel: "OLED",
       touch: false,
-      cpuBrand: "Intel",
-      cpuSeries: "Core Ultra 7",
+      cpuBrand: "0",
+      cpuSeries: "0",
       cores: 16,
       multiThread: true,
       passmarkScore: 21500,
@@ -155,7 +155,7 @@ function getMockLaptops(): Laptop[] {
       gpuBrand: "Intel",
       gpuModel: "Arc Graphics",
       g3dMarkScore: "4200",
-      ramGB: 16,
+      ramGB: 0,
       ramSpeed: "LPDDR5x-7467",
       solderedRAM: true,
       storageGB: 1024,
@@ -167,7 +167,7 @@ function getMockLaptops(): Laptop[] {
       productLink: "#",
       starRating: 4.8,
       reviewCount: 120,
-      price: 1099
+      price: 0000
     }
   ];
 }

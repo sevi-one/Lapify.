@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { Role, Laptop, SheetConfig } from './types';
 import { Layout } from './components/Layout';
@@ -19,16 +18,25 @@ const App: React.FC = () => {
   const [passwordInput, setPasswordInput] = useState('');
   const [loginError, setLoginError] = useState(false);
 
-  const [config, setConfig] = useState<SheetConfig>({
-    sheetId: DEFAULT_SHEET_ID,
-    tabName: DEFAULT_TAB_NAME,
+  const [config, setConfig] = useState<SheetConfig>(() => {
+    // Try to load from localStorage to persist across refreshes
+    const saved = localStorage.getItem('lapify_config');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        return { sheetId: DEFAULT_SHEET_ID, tabName: DEFAULT_TAB_NAME };
+      }
+    }
+    return { sheetId: DEFAULT_SHEET_ID, tabName: DEFAULT_TAB_NAME };
   });
 
-  const loadData = useCallback(async () => {
+  const loadData = useCallback(async (overridingConfig?: SheetConfig) => {
     setIsLoading(true);
     setIsDemoMode(false);
+    const targetConfig = overridingConfig || config;
     try {
-      const data = await fetchSheetData(config.sheetId, config.tabName);
+      const data = await fetchSheetData(targetConfig.sheetId, targetConfig.tabName);
       setLaptops(data);
     } catch (err) {
       console.error('App layer sync error:', err);
@@ -36,11 +44,17 @@ const App: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [config.sheetId, config.tabName]);
+  }, [config]);
+
+  // Persist config changes and reload
+  const handleUpdateConfig = (newConfig: SheetConfig) => {
+    setConfig(newConfig);
+    localStorage.setItem('lapify_config', JSON.stringify(newConfig));
+  };
 
   useEffect(() => {
     loadData();
-  }, [loadData]);
+  }, [config.sheetId, config.tabName]); // Explicitly depend on ID and Tab name
 
   const handleAdminRequest = () => {
     if (isAuthenticated) {
@@ -87,7 +101,6 @@ const App: React.FC = () => {
             max-h-[95vh] landscape:max-h-[90vh] overflow-y-auto custom-scrollbar
           `}>
             
-            {/* Left Column: Branding / Status */}
             <div className="text-center landscape:text-left lg:text-left landscape:w-1/2 lg:w-1/2 flex flex-col items-center landscape:items-start lg:items-start justify-center">
               <div className="w-14 h-14 sm:w-20 sm:h-20 blue-gradient text-[#F6FAFD] rounded-[20px] sm:rounded-[28px] flex items-center justify-center mb-4 sm:mb-6 shadow-[0_10px_25px_rgba(74,127,167,0.3)]">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 sm:w-10 sm:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -100,7 +113,6 @@ const App: React.FC = () => {
               </p>
             </div>
 
-            {/* Right Column: Input Form */}
             <form onSubmit={handleLoginSubmit} className="space-y-4 sm:space-y-6 w-full landscape:w-1/2 lg:w-1/2 lg:pt-2">
               <div className="space-y-3">
                 <label className="block text-[10px] font-black text-[#4A7FA7] uppercase tracking-[0.2em]">Security Key</label>
@@ -157,9 +169,9 @@ const App: React.FC = () => {
       ) : (
         <AdminPanel 
           config={config} 
-          setConfig={setConfig} 
+          setConfig={handleUpdateConfig} 
           laptops={laptops} 
-          refreshData={loadData}
+          refreshData={() => loadData()}
         />
       )}
     </Layout>
