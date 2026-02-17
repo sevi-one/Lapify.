@@ -149,13 +149,13 @@ const FilterControls: React.FC<FilterControlsProps> = ({
 
       <div className="space-y-5 pt-2 border-t border-white/5">
         <FilterSectionHeader title="Graphics Architecture" />
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-3">
           <div className="space-y-2">
             <p className="text-[10px] font-bold text-[#4A7FA7] uppercase tracking-widest">GPU Type</p>
             <select 
               value={prefs.gpuType}
               onChange={(e) => setPrefs({...prefs, gpuType: e.target.value})}
-              className="w-full bg-[#0A1931]/40 border border-white/10 rounded-xl px-2 py-2.5 text-xs text-[#B3CFE5]/80 focus:ring-1 focus:ring-[#B3CFE5] outline-none"
+              className="w-full bg-[#0A1931]/40 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-[#B3CFE5]/80 focus:ring-1 focus:ring-[#B3CFE5] outline-none"
             >
               {GPU_TYPES.map(t => <option key={t} value={t} className="bg-[#0A1931]">{t}</option>)}
             </select>
@@ -165,7 +165,7 @@ const FilterControls: React.FC<FilterControlsProps> = ({
             <select 
               value={prefs.gpuBrand}
               onChange={(e) => setPrefs({...prefs, gpuBrand: e.target.value})}
-              className="w-full bg-[#0A1931]/40 border border-white/10 rounded-xl px-2 py-2.5 text-xs text-[#B3CFE5]/80 focus:ring-1 focus:ring-[#B3CFE5] outline-none"
+              className="w-full bg-[#0A1931]/40 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-[#B3CFE5]/80 focus:ring-1 focus:ring-[#B3CFE5] outline-none"
             >
               {GPU_BRANDS.map(b => <option key={b} value={b} className="bg-[#0A1931]">{b}</option>)}
             </select>

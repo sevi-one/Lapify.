@@ -195,7 +195,7 @@ export const LaptopCard: React.FC<LaptopCardProps> = ({ laptop, isBestMatch }) =
                   onClick={handleCheckAvailability}
                   className="w-full py-4 blue-gradient text-[#F6FAFD] text-sm font-black uppercase tracking-widest rounded-2xl shadow-xl hover:brightness-110"
                 >
-                  Buy Now! (${laptop.price})
+                  Buy Laptop(${laptop.price})
                 </button>
               </div>
             </div>
