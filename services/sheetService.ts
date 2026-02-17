@@ -167,7 +167,7 @@ function getMockLaptops(): Laptop[] {
       productLink: "#",
       starRating: 4.8,
       reviewCount: 120,
-      price: 0000
+      price: 0
     }
   ];
 }
